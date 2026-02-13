@@ -1,11 +1,14 @@
 # docker-hub
 
-基于 [opencode](https://github.com/anomalyco/opencode) 官方镜像（Alpine）的 Docker 镜像，通过 GitHub Actions 自动构建并推送到 GitHub Container Registry (ghcr.io)。
+本仓库用于对各类基础镜像做定制改造，每个子目录对应一个**改造对象**，构建出的镜像以改造对象命名并推送到 GitHub Container Registry (ghcr.io)。
 
-## 镜像
+## 当前镜像
 
-- **构建上下文**: `./opencode`
-- **推送**: `ghcr.io/<owner>/<repo>:latest` 及 SHA 标签
+| 改造对象 | 目录 | 镜像名 |
+|----------|------|--------|
+| [opencode](https://github.com/anomalyco/opencode) | `./opencode` | `ghcr.io/<owner>/opencode:latest` |
+
+新增改造对象时：在仓库下新建同名目录（含 Dockerfile），并在 workflow 的 `matrix.target` 中增加该项。
 
 ## 本地创建仓库并推送（GitHub MCP 不可用时）
 
@@ -27,4 +30,5 @@ git push -u origin main
 
 - **工作流**: [.github/workflows/docker-build-push.yml](.github/workflows/docker-build-push.yml)
 - **触发**: 推送到 `main`/`master` 或 Actions 页手动运行
-- **结果**: 镜像构建并推送到 ghcr.io，可在仓库的 Packages 中查看
+- **镜像命名**: `ghcr.io/<owner>/<target>`，其中 `<target>` 为改造对象（如 `opencode`），与子目录名一致
+- **结果**: 各 target 分别构建并推送到 ghcr.io，可在仓库的 Packages 中查看
