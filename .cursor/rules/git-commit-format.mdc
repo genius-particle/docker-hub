@@ -1,0 +1,42 @@
+---
+description: Git 提交信息使用 GitHub/Conventional Commits 格式
+alwaysApply: true
+---
+
+# Git 提交信息格式
+
+本工作区（多技能目录）统一采用 **Conventional Commits**（GitHub 常见格式）书写 commit message。
+
+## 基本格式
+
+```
+<type>[(scope)]: <简短说明>
+
+[可选正文]
+
+[可选脚注]
+```
+
+- **type**（必填）：变更类型，如 feat / fix / docs / style / refactor / chore 等。
+- **scope**（可选）：影响范围，如技能名、脚本、文档。
+- **简短说明**：祈使句、一句话概括，首字母小写，末尾不加句号。
+
+## 常用 type
+
+| type   | 说明           |
+|--------|----------------|
+| feat   | 新功能         |
+| fix    | 修复           |
+| docs   | 文档           |
+| style  | 格式/风格      |
+| refactor | 重构（非功能） |
+| chore  | 杂项（依赖、配置等） |
+
+## 示例
+
+```
+feat(xlsx-to-markdown): 支持按 sheet 名过滤输出
+fix(skill-a): 空列导致表头错位
+docs: 补充 PYTHON_SETUP 引用说明
+chore: 将 Python 安装说明抽取到 PYTHON_SETUP.md
+```
