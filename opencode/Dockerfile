@@ -17,7 +17,7 @@ COPY requirements.txt .
 RUN apk update \
     && apk add --no-cache --virtual .build-deps \
     build-base musl-dev python3-dev libffi-dev
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
 RUN apk del .build-deps
 
 # 如果你依然使用 opencode web，确保启动命令正确
